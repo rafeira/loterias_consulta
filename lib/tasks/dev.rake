@@ -47,4 +47,27 @@ namespace :dev do
       spinner.success "(#{msg_end})"
     end
 
+    def build_raffle response
+      unless response["erro"]
+        Raffle.new(
+          name: response['nome'],
+          contest_number: response['numero_concurso'],
+          contest_date: response['data_concurso'],
+          contest_date_milliseconds: response['data_concurso_milliseconds'],
+          place_realization: response['local_realizacao'],
+          apportionment_processing: response['rateio_processamento'],
+          accumulated: response['acumulou'],
+          accumulated_value: response['valor_acumulado'],
+          dozens: response['dezenas'].join(','),
+          total_collection: response['arrecadacao_total'],
+          next_contest: response['concurso_proximo'],
+          next_contest_date: response['data_proximo_concurso'],
+          next_contest_date_milliseconds: response['data_proximo_concurso_milliseconds'],
+          estimated_value_next_contest: response['valor_estimado_proximo_concurso'],
+          valor_acumulado_especial: response['valor_acumulado_especial'],
+          special_accumulated_value: response['nome_acumulado_especial'],
+          special_contest: response['concurso_especial'],
+        )
+      end
+    end
 end

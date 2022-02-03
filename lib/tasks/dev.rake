@@ -30,11 +30,11 @@ namespace :dev do
             'Content-Type' => 'application/json',
         }
     end
-    def get_params
+    def get_params contest = nil
         {
             loteria: 'lotofacil',
             token: ENV['API_LOTERIAS_TOKEN'],
-            concurso: nil
+            concurso: contest
         }
     end
 end

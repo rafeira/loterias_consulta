@@ -70,4 +70,18 @@ namespace :dev do
         )
       end
     end
+
+    def build_winner_places raffle, winner_places
+      winner_places.map do |place|
+        raffle.winner_places.build(
+            place: place['place'],
+            city: place['cidade'],
+            uf: place['uf'],
+            winners_quantity: place['quantidade_ganhadores'],
+            electronic_channel: place['canal_eletronico'],
+        )
+      end
+      raffle
+    end
+    
 end

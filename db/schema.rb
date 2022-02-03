@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_02_181219) do
+ActiveRecord::Schema.define(version: 2022_02_03_231555) do
 
   create_table "awards", force: :cascade do |t|
-    t.string "nome"
+    t.string "name"
     t.integer "raffle_id", null: false
     t.integer "winners_quantity"
     t.decimal "total_values"

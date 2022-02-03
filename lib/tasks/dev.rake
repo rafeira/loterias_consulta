@@ -13,8 +13,21 @@ namespace :dev do
   
   desc "Add raffles from api"
   task add_raffles_from_api: :environment do
-    connection = get_instance
-    Raffle.create connection.get.to_json
+    contest = -1
+    response = JSON.parse get_instance.get.body
+    raffle = build_raffle response
+    if raffle
+      raffle.save
+      contest = raffle.contest_number
+      until contest <= contest - 500 do
+        contest = contest - 1
+        response = JSON.parse(get_instance(get_params(contest), nil).get.body)
+        raffle = build_raffle response
+        raffle = build_winner_places raffle, response['local_ganhadores']
+        raffle = build_awards raffle, response['premiacao']
+        raffle.save
+      end
+    end
   end
   
   private

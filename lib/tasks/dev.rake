@@ -25,11 +25,13 @@ namespace :dev do
             headers: get_headers
         )
     end
+
     def get_headers
         {
             'Content-Type' => 'application/json',
         }
     end
+
     def get_params contest = nil
         {
             loteria: 'lotofacil',
@@ -37,4 +39,12 @@ namespace :dev do
             concurso: contest
         }
     end
+
+    def show_spinner msg_start, msg_end = "Success!"
+      spinner = TTY::Spinner.new("[:spinner] #{msg_start}", format: :pulse_2)
+      spinner.auto_spin
+      yield
+      spinner.success "(#{msg_end})"
+    end
+
 end

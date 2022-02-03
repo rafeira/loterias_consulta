@@ -84,4 +84,15 @@ namespace :dev do
       raffle
     end
     
+    def build_awards raffle, awards
+      awards.map do |award|
+        raffle.awards.build(
+          name: award['name'],
+          winners_quantity: award['quantidade_ganhadores'],
+          total_values: award['valor_total'],
+          hits: award['acertos']
+        )
+      end
+      raffle
+    end
 end

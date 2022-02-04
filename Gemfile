@@ -26,6 +26,10 @@ gem 'faraday'
 
 
 gem "haml-rails", "~> 2.0"
+
+gem 'bulma-rails'
+
+gem "sassc-rails"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

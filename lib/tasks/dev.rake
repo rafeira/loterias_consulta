@@ -56,26 +56,26 @@ namespace :dev do
       spinner.success "(#{msg_end})"
     end
 
-    def build_raffle response
-      unless response["erro"]
+    def build_raffle response_body
+      unless response_body["erro"]
         Raffle.new(
-          name: response['nome'],
-          contest_number: response['numero_concurso'],
-          contest_date: response['data_concurso'],
-          contest_date_milliseconds: response['data_concurso_milliseconds'],
-          place_realization: response['local_realizacao'],
-          apportionment_processing: response['rateio_processamento'],
-          accumulated: response['acumulou'],
-          accumulated_value: response['valor_acumulado'],
-          dozens: response['dezenas'].join(','),
-          total_collection: response['arrecadacao_total'],
-          next_contest: response['concurso_proximo'],
-          next_contest_date: response['data_proximo_concurso'],
-          next_contest_date_milliseconds: response['data_proximo_concurso_milliseconds'],
-          estimated_value_next_contest: response['valor_estimado_proximo_concurso'],
-          valor_acumulado_especial: response['valor_acumulado_especial'],
-          special_accumulated_value: response['nome_acumulado_especial'],
-          special_contest: response['concurso_especial'],
+          name: response_body['nome'],
+          contest_number: response_body['numero_concurso'],
+          contest_date: response_body['data_concurso'],
+          contest_date_milliseconds: response_body['data_concurso_milliseconds'],
+          place_realization: response_body['local_realizacao'],
+          apportionment_processing: response_body['rateio_processamento'],
+          accumulated: response_body['acumulou'],
+          accumulated_value: response_body['valor_acumulado'],
+          dozens: response_body['dezenas'].join(','),
+          total_collection: response_body['arrecadacao_total'],
+          next_contest: response_body['concurso_proximo'],
+          next_contest_date: response_body['data_proximo_concurso'],
+          next_contest_date_milliseconds: response_body['data_proximo_concurso_milliseconds'],
+          estimated_value_next_contest: response_body['valor_estimado_proximo_concurso'],
+          valor_acumulado_especial: response_body['valor_acumulado_especial'],
+          special_accumulated_value: response_body['nome_acumulado_especial'],
+          special_contest: response_body['concurso_especial'],
         )
       end
     end

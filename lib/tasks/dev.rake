@@ -108,4 +108,9 @@ namespace :dev do
       end
       raffle
     end
+    
+    def get_response_body response
+      JSON.parse response.body
+    end
+
 end

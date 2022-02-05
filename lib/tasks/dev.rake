@@ -13,7 +13,7 @@ namespace :dev do
   
   desc "Add raffles from api"
   task add_raffles_from_api: :environment do
-    quantity = ENV['Q'].to_i - 1 if ENV['Q'] 
+    quantity = ENV['Q'].to_i if ENV['Q'] 
     @connection = get_instance
     response_body = get_response_body @connection.get
     raffle = build_raffle response_body

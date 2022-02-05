@@ -1,3 +1,14 @@
-
-%h1
-    = @raffles.to_a
+.container
+    %h1.title
+        Lotofácil
+    .subtitle
+        Digite os numéros para fazer uma verificação
+    - if @errors
+        - @errors.each do |error|
+            %p
+                = error
+    .form
+        .field.is-horizontal.mx-6
+            -15.times do |i|
+                %input.input.is-small.is-rounded
+                = i

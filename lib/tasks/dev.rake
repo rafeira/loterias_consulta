@@ -29,9 +29,9 @@ namespace :dev do
   private
     def get_instance params = get_params, headers = get_headers
         Faraday.new(
-            url: "https://apiloterias.com.br/app/resultado",
-            params: params,
-            headers: get_headers
+          url: "https://apiloterias.com.br/app/resultado",
+          params: params,
+          headers: headers
         )
     end
 

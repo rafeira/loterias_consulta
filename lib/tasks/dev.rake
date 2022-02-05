@@ -113,4 +113,15 @@ namespace :dev do
       JSON.parse response.body
     end
 
+    def build_many_raffles raffle_quantity = 0, last_contest
+      raffle_quantity.times do
+        last_contest = last_contest - 1
+        response = JSON.parse @connection.get(nil, concurso: last_contest).body
+        raffle = build_raffle response
+        raffle = build_winner_places raffle, response['local_ganhadores']
+        raffle = build_awards raffle, response['premiacao']
+        raffle.save
+      end
+    end
+
 end

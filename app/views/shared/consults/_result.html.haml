@@ -1,0 +1,10 @@
+- @raffles.each do |raffle|
+	.box.is-flex.is-justify-content-space-between
+		- raffle.dozens.split(",").each_with_index do |dozen, idx|
+			- if params["0"] && @values.any?{|v| v.to_i == dozen.to_i}
+				- tag = "is-success"
+			- else
+				- tag = "is-danger"
+			.tag{class: "#{tag}"}
+				= dozen
+	%br
